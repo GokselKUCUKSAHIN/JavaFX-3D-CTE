@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
 import javafx.scene.*;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Box;
@@ -66,7 +67,7 @@ public class Main extends Application
         Camera camera = new PerspectiveCamera(true);
         myScene.setCamera(camera);
 
-        initMouseControl(group, myScene);
+        initMouseControl(group, myScene, stage);
 
 
         camera.translateXProperty().set(0);
@@ -127,7 +128,7 @@ public class Main extends Application
         root.requestFocus();
     }
 
-    private void initMouseControl(RotateableGroup group, Scene scene)
+    private void initMouseControl(RotateableGroup group, Scene scene, Stage stage)
     {
         Rotate xRotate;
         Rotate yRotate;
@@ -145,15 +146,26 @@ public class Main extends Application
             //System.out.println("hello");
         });
         scene.setOnMouseDragged(e -> {
-            angleX.set(anchorAngleX - (anchorY - e.getSceneY()));
-            if (angleX.get() > 90)
+            angleX.set(anchorAngleX - (anchorY - e.getSceneY()) / 5);
+            double ang = angleX.get() % 360;
+            if(ang < 0)
             {
-                angleY.set(anchorAngleY - (anchorX - e.getSceneX()));
+                while(ang < 0)
+                {
+                    ang += 360;
+                }
+            }
+            if (ang > 90 && ang <= 270)
+            {
+                angleY.set(anchorAngleY - (anchorX - e.getSceneX()) / 5);
             } else
             {
-                angleY.set(anchorAngleY + (anchorX - e.getSceneX()));
+                angleY.set(anchorAngleY + (anchorX - e.getSceneX()) / 5);
             }
-            // System.out.printf("x:%f, y:%f\n", angleX.get(), angleY.get()); // DEBUG
+            System.out.printf("Angle: %3.2f, x:%3.2f, y:%3.2f\n",ang ,angleX.get(), angleY.get()); // DEBUG
+        });
+        stage.addEventHandler(ScrollEvent.SCROLL, e -> {
+            group.translateZProperty().set(group.getTranslateZ() + e.getDeltaY());
         });
     }
 
