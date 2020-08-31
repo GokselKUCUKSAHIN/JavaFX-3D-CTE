@@ -42,24 +42,7 @@ public class Main extends Application
         Scene myScene = new Scene(root, width - 10, height - 10, true, SceneAntialiasing.BALANCED);
         myScene.setFill(backcolor);
 
-
-        //Box box = new Box(100, 20, 50);
-        //group.getChildren().addAll(box);
         double y = -250;
-        /*for (int j = 0; j < 5; j++)
-        {
-            for (int i = 0; i < 360; i += 30)
-            {
-                Point2D location = Utils.endPoint(new Point2D(0, 0), i, 130);
-                Sphere temp = new Sphere(10);
-                temp.setTranslateX(location.getX());
-                temp.setTranslateZ(location.getY());
-                temp.setTranslateY(y);
-                group.getChildren().add(temp);
-
-            }
-            y += 120;
-        }*/
         for (int i = 0; i < 360 * 6; i += 21)
         {
             Point2D location = Utils.endPoint(new Point2D(0, 0), i, 130);
@@ -71,21 +54,17 @@ public class Main extends Application
             y += 5;
         }
 
-
         child.addAll(group);
         Camera camera = new PerspectiveCamera(true);
         myScene.setCamera(camera);
 
         initMouseControl(group, myScene, stage);
 
-
         camera.translateXProperty().set(0);
         camera.translateYProperty().set(0);
         camera.translateZProperty().set(-800);
-
         camera.setNearClip(1);
         camera.setFarClip(10000);
-
 
         //
         root.setOnKeyPressed(e -> {
@@ -129,7 +108,6 @@ public class Main extends Application
         update.setRate(1);
         update.setAutoReverse(false);
         //update.play(); //uncomment for play when start
-        //
         stage.setTitle(title);
         stage.setResizable(false);
         stage.setScene(myScene);

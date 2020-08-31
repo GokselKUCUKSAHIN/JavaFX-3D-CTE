@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Fx3D_Testing/Fx3D_Testing.iml" filepath="$PROJECT_DIR$/Fx3D_Testing/Fx3D_Testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fx3D_Testing_2/Fx3D_Testing_2.iml" filepath="$PROJECT_DIR$/Fx3D_Testing_2/Fx3D_Testing_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fx3D_Testing_3/Fx3D_Testing_3.iml" filepath="$PROJECT_DIR$/Fx3D_Testing_3/Fx3D_Testing_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fx3D_Testing_4/Fx3D_Testing_4.iml" filepath="$PROJECT_DIR$/Fx3D_Testing_4/Fx3D_Testing_4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaFX-3D-CTE.iml" filepath="$PROJECT_DIR$/.idea/JavaFX-3D-CTE.iml" />
+    </modules>
+  </component>
+</project>
